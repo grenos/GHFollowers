@@ -6,6 +6,8 @@
 //  Copyright © 2020 Vasileios Gkreen. All rights reserved.
 //
 
+// MARK: This conponent can be initialized either with the default init or with the custom initializer
+
 import UIKit
 
 class GFButton: UIButton {
@@ -13,7 +15,6 @@ class GFButton: UIButton {
     override init(frame: CGRect) {
         // init apple UIButton class
         super.init(frame: frame)
-        
         // custom code
         configure()
         
