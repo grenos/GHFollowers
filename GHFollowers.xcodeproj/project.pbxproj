@@ -14,6 +14,7 @@
 		7D98BB3C24290771006C53E9 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB3B24290771006C53E9 /* SearchVC.swift */; };
 		7D98BB3E242907BB006C53E9 /* FavoriteListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */; };
 		7D98BB40242917E4006C53E9 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB3F242917E4006C53E9 /* GFButton.swift */; };
+		7D98BB4224291DF3006C53E9 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB4124291DF3006C53E9 /* GFTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7D98BB3B24290771006C53E9 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListVC.swift; sourceTree = "<group>"; };
 		7D98BB3F242917E4006C53E9 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
+		7D98BB4124291DF3006C53E9 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				7D98BB3B24290771006C53E9 /* SearchVC.swift */,
 				7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */,
 				7D98BB3F242917E4006C53E9 /* GFButton.swift */,
+				7D98BB4124291DF3006C53E9 /* GFTextField.swift */,
 			);
 			path = GHFollowers;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D98BB4224291DF3006C53E9 /* GFTextField.swift in Sources */,
 				7D98BB3E242907BB006C53E9 /* FavoriteListVC.swift in Sources */,
 				7D98BB40242917E4006C53E9 /* GFButton.swift in Sources */,
 				7D98BB3C24290771006C53E9 /* SearchVC.swift in Sources */,
