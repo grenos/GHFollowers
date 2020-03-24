@@ -46,6 +46,27 @@ class SearchVC: UIViewController {
     }
     
     
+    // clean input on shake
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        userNameTextFiled.text = ""
+    }
+    
+    
+    // @objc because this func uses objectice-c language
+    @objc func pushFollowerListVC () {
+        let followerListVC = FollowerListVC()
+        // pass the value of the input to the FollowersVC View
+        followerListVC.username = userNameTextFiled.text
+        // same for the navigation title
+        followerListVC.title = userNameTextFiled.text
+        // finally handle the navigation
+        navigationController?.pushViewController(followerListVC, animated: true)
+    }
+    
+    
+    
+    // MARK: UI Functions
+    
     func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +88,8 @@ class SearchVC: UIViewController {
     
     func configureTextField() {
         view.addSubview(userNameTextFiled)
+        // set as delegate of the textField to this view (to receive the input and pass it arround to other screens)
+        userNameTextFiled.delegate = self
         
         NSLayoutConstraint.activate([
             // place textField at the bottom of the imageView with a top margin of 48
@@ -85,6 +108,9 @@ class SearchVC: UIViewController {
     func configureCTAButton() {
         view.addSubview(CTAButton)
         
+        // call pushFollowerListVC whenever we tap the button
+        CTAButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             // set button on bottom after the safeArea and give a margin of 50
             CTAButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -96,6 +122,20 @@ class SearchVC: UIViewController {
             CTAButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
+    }
+    
+}
+
+
+// use an extension for this to avoid clutter and write cleaner code (makes no difference in performance)
+// conform to the delegate of the input
+extension SearchVC: UITextFieldDelegate {
+    
+    // SearchVC listens to the return button of the keyboard of the textFeild
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // calls function on tap of return key of keyboard
+        pushFollowerListVC()
+        return true
     }
     
 }
