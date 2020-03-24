@@ -29,7 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = createTabBar()
         // to show the window
         window?.makeKeyAndVisible()
-            
+        
+        
+        configureNavigationBar()
     }
     
     
@@ -59,6 +61,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return tabbar
     }
     
+    
+    // MARK: Global nav styles
+    func configureNavigationBar () {
+        UINavigationBar.appearance().tintColor = .systemGreen
+    }
+ 
     
 
     func sceneDidDisconnect(_ scene: UIScene) {
