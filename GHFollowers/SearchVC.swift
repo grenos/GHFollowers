@@ -20,7 +20,10 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
         configureLogoImageView()
+        configureTextField()
+        configureCTAButton()
     }
     
     // component will focus
@@ -47,6 +50,40 @@ class SearchVC: UIViewController {
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             // set width
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
+            
+        ])
+    }
+    
+    
+    func configureTextField() {
+        view.addSubview(userNameTextFiled)
+        
+        NSLayoutConstraint.activate([
+            // place textField at the bottom of the imageView with a top margin of 48
+            userNameTextFiled.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
+            // pin one side to the begining of the entire view and give it a margin of 50
+            userNameTextFiled.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            // same thing as above but for the end of the input and the rigth side of the screen
+            userNameTextFiled.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            // set height
+            userNameTextFiled.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+    }
+    
+    
+    func configureCTAButton() {
+        view.addSubview(CTAButton)
+        
+        NSLayoutConstraint.activate([
+            // set button on bottom after the safeArea and give a margin of 50
+            CTAButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            // pin to left of screen and give a margin of 50
+            CTAButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            // same as above but from the right side
+            CTAButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            // give it a height of 50
+            CTAButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
