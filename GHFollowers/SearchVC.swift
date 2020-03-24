@@ -24,6 +24,8 @@ class SearchVC: UIViewController {
         configureLogoImageView()
         configureTextField()
         configureCTAButton()
+        
+        createDismissKeyboardTapGesture()
     }
     
     // component will focus
@@ -34,6 +36,14 @@ class SearchVC: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    
+    // adds a custom gesture
+    func createDismissKeyboardTapGesture () {
+        // target -> the view i will tap, action -> what to do when i tap it
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        // add the new gesture to the view
+        view.addGestureRecognizer(tap)
+    }
     
     
     func configureLogoImageView() {
