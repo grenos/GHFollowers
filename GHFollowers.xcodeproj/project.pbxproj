@@ -20,6 +20,7 @@
 		7D98BB48242A5507006C53E9 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB47242A5507006C53E9 /* GFBodyLabel.swift */; };
 		7D98BB4A242A55ED006C53E9 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */; };
 		7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB4B242A7327006C53E9 /* UIViewController+EXT.swift */; };
+		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7D98BB47242A5507006C53E9 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		7D98BB4B242A7327006C53E9 /* UIViewController+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EXT.swift"; sourceTree = "<group>"; };
+		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				7D98BB4124291DF3006C53E9 /* GFTextField.swift */,
 				7D98BB45242A52B7006C53E9 /* GFTitleLabel.swift */,
 				7D98BB47242A5507006C53E9 /* GFBodyLabel.swift */,
+				7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */,
 				7D98BB4224291DF3006C53E9 /* GFTextField.swift in Sources */,
 				7D98BB3E242907BB006C53E9 /* FavoriteListVC.swift in Sources */,
 				7D98BB40242917E4006C53E9 /* GFButton.swift in Sources */,
