@@ -15,6 +15,11 @@ class SearchVC: UIViewController {
     let userNameTextFiled = GFTextField()
     let CTAButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
     
+    // computed property to control if inout is empty
+    var isUsernameEntered: Bool {
+        return !userNameTextFiled.text!.isEmpty
+    }
+    
 
     // component did mount
     override func viewDidLoad() {
@@ -54,6 +59,12 @@ class SearchVC: UIViewController {
     
     // @objc because this func uses objectice-c language
     @objc func pushFollowerListVC () {
+        
+        // if input is empty -> do nothing
+        guard isUsernameEntered else {
+            return
+        }
+        
         let followerListVC = FollowerListVC()
         // pass the value of the input to the FollowersVC View
         followerListVC.username = userNameTextFiled.text
