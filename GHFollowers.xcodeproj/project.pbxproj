@@ -84,6 +84,7 @@
 		7D98BB4D242A7B6C006C53E9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7D98BB3B24290771006C53E9 /* SearchVC.swift */,
 				7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */,
 				7D98BB43242A29B4006C53E9 /* FollowerListVC.swift */,
@@ -94,7 +95,6 @@
 		7D98BB4E242A7BD5006C53E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7D98BB3F242917E4006C53E9 /* GFButton.swift */,
 				7D98BB4124291DF3006C53E9 /* GFTextField.swift */,
 				7D98BB45242A52B7006C53E9 /* GFTitleLabel.swift */,
