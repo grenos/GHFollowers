@@ -42,7 +42,7 @@ class FollowerListVC: UIViewController {
     func configureCollectionView() {
         // init collection view
         // view.bounds to fill up the whole screen of the phone
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createThreeColumnFlowLayout())
         // add collection view to Screen
         view.addSubview(collectionView)
         
@@ -50,6 +50,21 @@ class FollowerListVC: UIViewController {
         
         // registrer the cell in the collection view
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
+    }
+    
+    
+    func createThreeColumnFlowLayout() -> UICollectionViewFlowLayout {
+        let width = view.bounds.width
+        let padding: CGFloat = 12
+        let minimumItemSpacing: CGFloat = 10
+        let availableWidth = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidth = availableWidth / 3
+        
+        let flowlayout = UICollectionViewFlowLayout()
+        flowlayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        flowlayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
+        
+        return flowlayout
     }
     
     
