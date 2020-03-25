@@ -22,7 +22,7 @@ class FollowerListVC: UIViewController {
             
             // check if we actually get folowers or its nil
             guard let followers = followers else {
-                self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: errosMessage!, buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: errosMessage!.rawValue, buttonTitle: "Ok")
                 return
             }
             

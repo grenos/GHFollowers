@@ -16,7 +16,7 @@ class NetworkManager {
     private init() {}
     
     
-    func getFollowers(for username: String, page: Int, completed: @escaping([Follower]?, String?) -> Void) {
+    func getFollowers(for username: String, page: Int, completed: @escaping([Follower]?, ErrorMessage?) -> Void) {
         // set endpoint
         let endpoint = baseUrl + "/users/\(username)/followers?per_page=100&page=\(page)"
         
@@ -28,7 +28,7 @@ class NetworkManager {
             
             // call the callback and pass nil for the followers array
             // then for the error pass the string
-            completed(nil, "This username created an invalid request. Please try again")
+            completed(nil, .invalidUsername)
             return
         }
         
@@ -39,7 +39,7 @@ class NetworkManager {
             // if error exists and its not nil
             // this error will return if the network call wasn't even made
             if let _ = error {
-                completed(nil, "Unable to complete your request. Please check your internet connection")
+                completed(nil, .unableToComplete)
                 return
             }
             
@@ -48,7 +48,7 @@ class NetworkManager {
             // cast it as a HTTPURLResponse adn save in the variable
             // ELSE call completed with the error string
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, "Invalid response from the server. Please try again.")
+                completed(nil, .invalidResponse)
                 return
             }
             
@@ -56,7 +56,7 @@ class NetworkManager {
             // check if the data response is good and save in the variable data
             // else call completed
             guard let data = data else {
-                completed(nil, "The data received from the server was invalid. Please try again")
+                completed(nil, .invalidData)
                 return
             }
             
@@ -73,7 +73,7 @@ class NetworkManager {
                 
             } catch {
                 // if the decoder above throws
-                completed(nil, "The data received from the server was invalid. Please try again")
+                completed(nil, .invalidData)
             }
             
             
