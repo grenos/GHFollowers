@@ -22,6 +22,7 @@
 		7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB4B242A7327006C53E9 /* UIViewController+EXT.swift */; };
 		7DA45F64242B73E600AB426F /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F63242B73E600AB426F /* Follower.swift */; };
 		7DA45F66242B760500AB426F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F65242B760500AB426F /* User.swift */; };
+		7DA45F69242B831900AB426F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F68242B831900AB426F /* NetworkManager.swift */; };
 		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		7D98BB4B242A7327006C53E9 /* UIViewController+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EXT.swift"; sourceTree = "<group>"; };
 		7DA45F63242B73E600AB426F /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		7DA45F65242B760500AB426F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7DA45F68242B831900AB426F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7D98BB352428FE75006C53E9 /* Info.plist */,
+				7DA45F67242B82F900AB426F /* Managers */,
 				7DA45F62242B73BD00AB426F /* Model */,
 				7D98BB50242A7C91006C53E9 /* Utilities */,
 				7D98BB4F242A7C10006C53E9 /* Extensions */,
@@ -135,6 +138,14 @@
 				7DA45F65242B760500AB426F /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7DA45F67242B82F900AB426F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7DA45F68242B831900AB426F /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				7D98BB46242A52B7006C53E9 /* GFTitleLabel.swift in Sources */,
 				7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */,
 				7D98BB44242A29B4006C53E9 /* FollowerListVC.swift in Sources */,
+				7DA45F69242B831900AB426F /* NetworkManager.swift in Sources */,
 				7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */,
 				7D98BB2A2428FE73006C53E9 /* SceneDelegate.swift in Sources */,
 			);

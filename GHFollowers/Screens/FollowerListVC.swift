@@ -17,6 +17,19 @@ class FollowerListVC: UIViewController {
 
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        NetworkManager.shared.getFollowers(for: username, page: 1) { followers, errosMessage in
+            
+            // check if we actually get folowers or its nil
+            guard let followers = followers else {
+                self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: errosMessage!, buttonTitle: "Ok")
+                return
+            }
+            
+            print(followers.count)
+            print(followers)
+            
+        }
     }
     
     // component will focus
