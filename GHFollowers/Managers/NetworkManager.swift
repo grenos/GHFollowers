@@ -16,7 +16,7 @@ class NetworkManager {
     private init() {}
     
     
-    func getFollowers(for username: String, page: Int, completed: @escaping([Follower]?, ErrorMessage?) -> Void) {
+    func getFollowers(for username: String, page: Int, completed: @escaping(Result<[Follower], GFError>) -> Void) {
         // set endpoint
         let endpoint = baseUrl + "/users/\(username)/followers?per_page=100&page=\(page)"
         
@@ -26,9 +26,8 @@ class NetworkManager {
             // so our ViewController that calls that function can print the custom alert
             // because we should print Views only from main thread
             
-            // call the callback and pass nil for the followers array
-            // then for the error pass the string
-            completed(nil, .invalidUsername)
+            // call the callback and pass the error
+            completed(.failure(.invalidUsername))
             return
         }
         
@@ -39,7 +38,7 @@ class NetworkManager {
             // if error exists and its not nil
             // this error will return if the network call wasn't even made
             if let _ = error {
-                completed(nil, .unableToComplete)
+                completed(.failure(.unableToComplete))
                 return
             }
             
@@ -48,7 +47,7 @@ class NetworkManager {
             // cast it as a HTTPURLResponse adn save in the variable
             // ELSE call completed with the error string
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, .invalidResponse)
+                completed(.failure(.invalidResponse))
                 return
             }
             
@@ -56,7 +55,7 @@ class NetworkManager {
             // check if the data response is good and save in the variable data
             // else call completed
             guard let data = data else {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
                 return
             }
             
@@ -69,11 +68,11 @@ class NetworkManager {
                 // array we want to create          its type        from the data constant from above
                 let followers = try decoder.decode([Follower].self, from: data)
                 // if all ok call the completed callback, passing the array and nil for error
-                completed(followers, nil)
+                completed(.success(followers))
                 
             } catch {
                 // if the decoder above throws
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
             }
             
             
