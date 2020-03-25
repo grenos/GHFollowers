@@ -38,7 +38,7 @@ class SearchVC: UIViewController {
         super.viewDidAppear(animated)
         // hide navbar on this screen
         // called in this lifecycle because we need to hide it everytime we enter this screen
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     
@@ -60,7 +60,7 @@ class SearchVC: UIViewController {
     // @objc because this func uses objectice-c language
     @objc func pushFollowerListVC () {
         
-        // if input is empty -> do nothing
+        // if input is empty -> show Alert
         guard isUsernameEntered else {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "Close")
             return

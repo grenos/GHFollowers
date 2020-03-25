@@ -16,8 +16,16 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
-        navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    // component will focus
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // show navbar on this screen
+        // called in this lifecycle because we need to show it everytime we enter this screen
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     
 }
