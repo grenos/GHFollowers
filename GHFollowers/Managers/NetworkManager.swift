@@ -6,12 +6,15 @@
 //  Copyright © 2020 Vasileios Gkreen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseUrl = "https://api.github.com"
+    private let baseUrl = "https://api.github.com"
+    
+    //init caching
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
     
@@ -42,7 +45,6 @@ class NetworkManager {
                 return
             }
             
-            
             // if response exists and is not nil and if status code is 200(OK)
             // cast it as a HTTPURLResponse adn save in the variable
             // ELSE call completed with the error string
@@ -51,14 +53,12 @@ class NetworkManager {
                 return
             }
             
-            
             // check if the data response is good and save in the variable data
             // else call completed
             guard let data = data else {
                 completed(.failure(.invalidData))
                 return
             }
-            
             
             // Decode JSON file and place it in model
             do {

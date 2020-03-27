@@ -30,8 +30,11 @@ class FollowerCell: UICollectionViewCell {
     
     
     // setter for the follower data
+    // this func get its data from the function called configureDataSource() that calls cell.set(follower: follower)
+    // on the FollowerListVC View Controller
     func set(follower: Follower) {
         usernameLabel.text = follower.login
+        avatarImageView.downloadImage(from: follower.avatarUrl)
     }
     
     
