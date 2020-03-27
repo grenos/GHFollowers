@@ -26,6 +26,7 @@
 		7DA45F6C242BAEEC00AB426F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F6B242BAEEC00AB426F /* ErrorMessage.swift */; };
 		7DA45F6F242BC47D00AB426F /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F6E242BC47D00AB426F /* FollowerCell.swift */; };
 		7DA45F71242BC5C100AB426F /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F70242BC5C100AB426F /* GFAvatarImageView.swift */; };
+		7DA45F73242E332000AB426F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F72242E332000AB426F /* UIHelper.swift */; };
 		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		7DA45F6B242BAEEC00AB426F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		7DA45F6E242BC47D00AB426F /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		7DA45F70242BC5C100AB426F /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		7DA45F72242E332000AB426F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				7DA45F6B242BAEEC00AB426F /* ErrorMessage.swift */,
+				7DA45F72242E332000AB426F /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */,
 				7D98BB44242A29B4006C53E9 /* FollowerListVC.swift in Sources */,
 				7DA45F6C242BAEEC00AB426F /* ErrorMessage.swift in Sources */,
+				7DA45F73242E332000AB426F /* UIHelper.swift in Sources */,
 				7DA45F69242B831900AB426F /* NetworkManager.swift in Sources */,
 				7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */,
 				7D98BB2A2428FE73006C53E9 /* SceneDelegate.swift in Sources */,

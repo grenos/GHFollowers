@@ -12,7 +12,8 @@ import Foundation
 // BUT we can chanhe the names of the variables from snake_case to camelCase ** avatar_url --> avatarUrl ** codable will take care of this
 // here we conform to the Codable protocol because we are using it on the network calls
 
-struct Follower: Codable {
+// We use the Follower object with the diffable data source so it needs to conform to Hashable
+struct Follower: Codable, Hashable {
     var login: String
     var avatarUrl: String
 }
