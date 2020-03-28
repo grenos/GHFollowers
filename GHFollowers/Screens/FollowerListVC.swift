@@ -102,9 +102,16 @@ class FollowerListVC: UIViewController {
         // CHECK PLAYGROUND FOR DETAILS
         // [week self] --> capture list
         // when a self becomes weak the value of that becomes optional
+        
+        // show activity indicator before the network call --- EXTENSIONS FILE ---
+        showLoadingView()
+        
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             // instead of adding self?. to all values below use guard for the self
             guard let self = self else { return }
+            
+            // call to dismiss the loading indicator --- EXTENSIONS FILE ---
+            self.dismissLoadingView()
             
             switch result {
             case .success(let followers):
@@ -114,6 +121,17 @@ class FollowerListVC: UIViewController {
                 // save the response in the followers array we declared and use append to save the next 100 results (concat, push)
                 self.followers.append(contentsOf: followers)
                 // call update data to keep the list updated with latest response
+            
+                // control if array is returned empty and show empty state view
+                if self.followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them! 😜"
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
+                
+                // call to update snapshot
                 self.updateData()
                 
             case .failure(let error):
@@ -137,7 +155,6 @@ extension FollowerListVC: UICollectionViewDelegate {
         let contentHeight = scrollView.contentSize.height
         // get height of scrollView on screen
         let scrollViewHeight = scrollView.frame.size.height
-        
         
         // if our offset is more than the entire scroll distance plus the screenheight
         // it means we reached the end so we need to call the next page
