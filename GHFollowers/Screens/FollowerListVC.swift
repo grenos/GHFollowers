@@ -15,10 +15,13 @@ class FollowerListVC: UIViewController {
         case main
     }
     
+    // username is the inout text passed from the SearchVC
     var username: String!
     var collectionView: UICollectionView!
     
     var followers: [Follower] = []
+    var page = 1
+    var hasMoreFollowers = true
     
     // takes 2 generic paraeters
     // both of them need to conform to hashable
@@ -30,7 +33,7 @@ class FollowerListVC: UIViewController {
         
         configureViewController()
         configureCollectionView()
-        getFollowers()
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -57,6 +60,9 @@ class FollowerListVC: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         // add collection view to Screen
         view.addSubview(collectionView)
+        
+        // set the delegate to pass methods to View Controller
+        collectionView.delegate = self
         
         collectionView.backgroundColor = .systemBackground
         
@@ -91,21 +97,25 @@ class FollowerListVC: UIViewController {
     
     
     // MARK: API call
-    func getFollowers() {
+    func getFollowers(username: String, page: Int) {
         // api call for followers
         // CHECK PLAYGROUND FOR DETAILS
         // [week self] --> capture list
         // when a self becomes weak the value of that becomes optional
-        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             // instead of adding self?. to all values below use guard for the self
             guard let self = self else { return }
             
             switch result {
             case .success(let followers):
-                // save the response in the followers array we declared
-                self.followers = followers
+                // if no more follower turn switch off
+                // we use 100 because it is our page limit
+                if followers.count < 100 { self.hasMoreFollowers = false }
+                // save the response in the followers array we declared and use append to save the next 100 results (concat, push)
+                self.followers.append(contentsOf: followers)
                 // call update data to keep the list updated with latest response
                 self.updateData()
+                
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: error.rawValue, buttonTitle: "Ok")
             }
@@ -113,7 +123,34 @@ class FollowerListVC: UIViewController {
         }
     }
     
+}
+
+// MARK: Pagination
+// Conform to the collection View delegate to recieve the methods of the Collection View
+// (ue delegate to --> wait for an action to happen and act)
+extension FollowerListVC: UICollectionViewDelegate {
     
-    
-    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // get how much we have scrolled
+        let offsetY = scrollView.contentOffset.y
+        // get how much is the size of the entire controller (with scroll)
+        let contentHeight = scrollView.contentSize.height
+        // get height of scrollView on screen
+        let scrollViewHeight = scrollView.frame.size.height
+        
+        
+        // if our offset is more than the entire scroll distance plus the screenheight
+        // it means we reached the end so we need to call the next page
+        if offsetY > contentHeight - scrollViewHeight {
+            
+            // if no more followers return
+            guard hasMoreFollowers else { return }
+            
+            page += 1
+            getFollowers(username: username, page: page)
+        }
+        
+        
+        
+    }
 }
