@@ -24,6 +24,7 @@ class FollowerListVC: UIViewController {
     
     var page = 1
     var hasMoreFollowers = true
+    var isSearching = false
     
     // takes 2 generic paraeters
     // both of them need to conform to hashable
@@ -93,7 +94,9 @@ class FollowerListVC: UIViewController {
         // the items array that needs to check for changes
         snapshot.appendItems(followers)
         // applay the snapshots to the dataSource
-        dataSource.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     
@@ -189,10 +192,25 @@ extension FollowerListVC: UICollectionViewDelegate {
             page += 1
             getFollowers(username: username, page: page)
         }
-        
-        
-        
     }
+    
+    
+    // get the exact tapped item from the collection
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // get the right array to use first
+        let activeArray = isSearching ? filteredFollowers : followers
+        //get the index of the tapped item
+        let follower = activeArray[indexPath.item]
+        
+        // Navigate to modal
+        let userInfoVC = UserInfoVC()
+        // pass the username to the modal to use at the user api call
+        userInfoVC.username = follower.login
+        // we put the modal inside a NavController so we could have the navigation buttons in the modal
+        let navController = UINavigationController(rootViewController: userInfoVC)
+        present(navController, animated: true)
+    }
+    
 }
 
 
@@ -202,8 +220,10 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     // this informs the VC every time the search results are changed
     func updateSearchResults(for searchController: UISearchController) {
         
-        
         guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
+        
+        //set the switch on
+        isSearching = true
         
         // get each item of the followers array
         // check if contains the text from the searchBar
@@ -216,9 +236,13 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         updateData(on: filteredFollowers)
     }
     
+    
     // when cancel button is tapped update the collection View using the original follwers array
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       updateData(on: followers)
+        //set the switch on
+        isSearching = false
+        
+        updateData(on: followers)
     }
     
     

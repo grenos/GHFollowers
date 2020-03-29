@@ -28,6 +28,7 @@
 		7DA45F71242BC5C100AB426F /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F70242BC5C100AB426F /* GFAvatarImageView.swift */; };
 		7DA45F73242E332000AB426F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F72242E332000AB426F /* UIHelper.swift */; };
 		7DA45F7A242FB95700AB426F /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F79242FB95700AB426F /* GFEmptyStateView.swift */; };
+		7DA45F7C2430E3C900AB426F /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA45F7B2430E3C900AB426F /* UserInfoVC.swift */; };
 		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		7DA45F70242BC5C100AB426F /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		7DA45F72242E332000AB426F /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7DA45F79242FB95700AB426F /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		7DA45F7B2430E3C900AB426F /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				7D98BB3B24290771006C53E9 /* SearchVC.swift */,
 				7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */,
 				7D98BB43242A29B4006C53E9 /* FollowerListVC.swift */,
+				7DA45F7B2430E3C900AB426F /* UserInfoVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				7DA45F6F242BC47D00AB426F /* FollowerCell.swift in Sources */,
 				7DA45F71242BC5C100AB426F /* GFAvatarImageView.swift in Sources */,
 				7D98BB48242A5507006C53E9 /* GFBodyLabel.swift in Sources */,
+				7DA45F7C2430E3C900AB426F /* UserInfoVC.swift in Sources */,
 				7DA45F64242B73E600AB426F /* Follower.swift in Sources */,
 				7D98BB46242A52B7006C53E9 /* GFTitleLabel.swift in Sources */,
 				7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */,
