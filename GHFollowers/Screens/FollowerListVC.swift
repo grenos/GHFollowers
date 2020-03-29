@@ -20,6 +20,8 @@ class FollowerListVC: UIViewController {
     var collectionView: UICollectionView!
     
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
+    
     var page = 1
     var hasMoreFollowers = true
     
@@ -32,6 +34,7 @@ class FollowerListVC: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
+        configureSearchController()
         configureCollectionView()
         getFollowers(username: username, page: page)
         configureDataSource()
@@ -70,7 +73,6 @@ class FollowerListVC: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
-    
     // called in init
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
@@ -83,7 +85,7 @@ class FollowerListVC: UIViewController {
     }
     
     // called every time a new response arrives from the server
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         // declare snapshot
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         // tell what section it needs to wathc
@@ -92,6 +94,25 @@ class FollowerListVC: UIViewController {
         snapshot.appendItems(followers)
         // applay the snapshots to the dataSource
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    
+    
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        
+        // set the delegate for searchResultsUpdater
+        searchController.searchResultsUpdater = self
+        // set the delegate to listen to the search bar events (needed for the cancel button)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search followers"
+        // set overlay to false so we can tap on a user
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        // set the searchController we created as a nav item (so we cam see it in the bav)
+        navigationItem.searchController = searchController
+        
     }
     
     
@@ -131,8 +152,10 @@ class FollowerListVC: UIViewController {
                     return
                 }
                 
-                // call to update snapshot
-                self.updateData()
+                // call to update snapshot with the followers array
+                self.updateData(on: self.followers)
+                
+
                 
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: error.rawValue, buttonTitle: "Ok")
@@ -170,4 +193,33 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         
     }
+}
+
+
+// MARK: Filter arrays
+extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    // this informs the VC every time the search results are changed
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
+        
+        // get each item of the followers array
+        // check if contains the text from the searchBar
+        // append the return to the filteredFollowers array
+        filteredFollowers = followers.filter {
+            $0.login.lowercased().contains(filter.lowercased())
+        }
+        
+        // Update collection view with new results passing the new array
+        updateData(on: filteredFollowers)
+    }
+    
+    // when cancel button is tapped update the collection View using the original follwers array
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+       updateData(on: followers)
+    }
+    
+    
 }
