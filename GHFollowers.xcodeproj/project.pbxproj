@@ -105,7 +105,6 @@
 		7D98BB4D242A7B6C006C53E9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7D98BB3B24290771006C53E9 /* SearchVC.swift */,
 				7D98BB3D242907BB006C53E9 /* FavoriteListVC.swift */,
 				7D98BB43242A29B4006C53E9 /* FollowerListVC.swift */,
@@ -117,6 +116,7 @@
 		7D98BB4E242A7BD5006C53E9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7DA45F7D2433DCE700AB426F /* ViewControllers */,
 				7DA45F78242FB8DB00AB426F /* Labels */,
 				7DA45F77242FB8C300AB426F /* ImageViews */,
 				7DA45F76242FB8A000AB426F /* TextFields */,
@@ -220,6 +220,14 @@
 				7D98BB47242A5507006C53E9 /* GFBodyLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		7DA45F7D2433DCE700AB426F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
