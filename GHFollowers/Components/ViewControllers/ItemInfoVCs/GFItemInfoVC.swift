@@ -14,7 +14,22 @@ class GFItemInfoVC: UIViewController {
     let itemInfoView1 = GFItemInfoView()
     let itemInfoView2 = GFItemInfoView()
     let actionButton = GFButton()
-
+    
+    var user: User!
+    
+    // create a custom initializer
+    // so when we initialize the VC we can pass the User object
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()

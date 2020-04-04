@@ -45,6 +45,14 @@ class GFButton: UIButton {
         // dynamic font (app responds to global text size changes)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false
-        
     }
+    
+    
+    
+    // this is to configure our button after the first init of the button
+    func set(backgroundColor: UIColor, title: String) {
+        self.backgroundColor = backgroundColor
+        setTitle(title, for: .normal)
+    }
+    
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7D7C665224388F0900733687 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C665124388F0900733687 /* GFItemInfoView.swift */; };
 		7D7C6654243897F300733687 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C6653243897F300733687 /* GFItemInfoVC.swift */; };
+		7D7C665624389E0600733687 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C665524389E0600733687 /* GFRepoItemVC.swift */; };
+		7D7C66582438A22C00733687 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C66572438A22C00733687 /* GFFollowerItemVC.swift */; };
 		7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB272428FE73006C53E9 /* AppDelegate.swift */; };
 		7D98BB2A2428FE73006C53E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB292428FE73006C53E9 /* SceneDelegate.swift */; };
 		7D98BB312428FE75006C53E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D98BB302428FE75006C53E9 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		7D7C665124388F0900733687 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		7D7C6653243897F300733687 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
+		7D7C665524389E0600733687 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
+		7D7C66572438A22C00733687 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		7D98BB242428FE73006C53E9 /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D98BB272428FE73006C53E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D98BB292428FE73006C53E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +85,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D7C66592438A2B300733687 /* ItemInfoVCs */ = {
+			isa = PBXGroup;
+			children = (
+				7D7C6653243897F300733687 /* GFItemInfoVC.swift */,
+				7D7C665524389E0600733687 /* GFRepoItemVC.swift */,
+				7D7C66572438A22C00733687 /* GFFollowerItemVC.swift */,
+			);
+			path = ItemInfoVCs;
+			sourceTree = "<group>";
+		};
 		7D98BB1B2428FE73006C53E9 = {
 			isa = PBXGroup;
 			children = (
@@ -238,9 +252,9 @@
 		7DA45F7D2433DCE700AB426F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7D7C66592438A2B300733687 /* ItemInfoVCs */,
 				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7DA45F842433FAF800AB426F /* GFUserInfoheaderVC.swift */,
-				7D7C6653243897F300733687 /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -327,6 +341,7 @@
 				7DA45F71242BC5C100AB426F /* GFAvatarImageView.swift in Sources */,
 				7D98BB48242A5507006C53E9 /* GFBodyLabel.swift in Sources */,
 				7DA45F7C2430E3C900AB426F /* UserInfoVC.swift in Sources */,
+				7D7C665624389E0600733687 /* GFRepoItemVC.swift in Sources */,
 				7DA45F64242B73E600AB426F /* Follower.swift in Sources */,
 				7D98BB46242A52B7006C53E9 /* GFTitleLabel.swift in Sources */,
 				7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */,
@@ -334,6 +349,7 @@
 				7D98BB44242A29B4006C53E9 /* FollowerListVC.swift in Sources */,
 				7DA45F6C242BAEEC00AB426F /* ErrorMessage.swift in Sources */,
 				7D7C6654243897F300733687 /* GFItemInfoVC.swift in Sources */,
+				7D7C66582438A22C00733687 /* GFFollowerItemVC.swift in Sources */,
 				7DA45F73242E332000AB426F /* UIHelper.swift in Sources */,
 				7DA45F69242B831900AB426F /* NetworkManager.swift in Sources */,
 				7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */,
