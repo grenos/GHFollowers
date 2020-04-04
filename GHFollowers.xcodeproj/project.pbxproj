@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D7C665224388F0900733687 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C665124388F0900733687 /* GFItemInfoView.swift */; };
+		7D7C6654243897F300733687 /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7C6653243897F300733687 /* GFItemInfoVC.swift */; };
 		7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB272428FE73006C53E9 /* AppDelegate.swift */; };
 		7D98BB2A2428FE73006C53E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D98BB292428FE73006C53E9 /* SceneDelegate.swift */; };
 		7D98BB312428FE75006C53E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D98BB302428FE75006C53E9 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		7D7C665124388F0900733687 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		7D7C6653243897F300733687 /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
 		7D98BB242428FE73006C53E9 /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D98BB272428FE73006C53E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D98BB292428FE73006C53E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7DA45F842433FAF800AB426F /* GFUserInfoheaderVC.swift */,
+				7D7C6653243897F300733687 /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				7DA45F812433DE1300AB426F /* GFTitleLabel-Secondary.swift in Sources */,
 				7D98BB44242A29B4006C53E9 /* FollowerListVC.swift in Sources */,
 				7DA45F6C242BAEEC00AB426F /* ErrorMessage.swift in Sources */,
+				7D7C6654243897F300733687 /* GFItemInfoVC.swift in Sources */,
 				7DA45F73242E332000AB426F /* UIHelper.swift in Sources */,
 				7DA45F69242B831900AB426F /* NetworkManager.swift in Sources */,
 				7D98BB282428FE73006C53E9 /* AppDelegate.swift in Sources */,
