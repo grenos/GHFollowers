@@ -13,6 +13,7 @@ class UserInfoVC: UIViewController {
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
     
     // username gets passed here from FollowerListVC from function -- extension FollowerListVC: UICollectionViewDelegate --
@@ -52,6 +53,7 @@ class UserInfoVC: UIViewController {
                     self.add(childVC: GFUserInfoheaderVC(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
                     self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.dateLabel.text = "GitHub since \(user.createdAt.convertToDisplayFormat())"
                 }
                 
             case .failure(let error):
@@ -64,7 +66,7 @@ class UserInfoVC: UIViewController {
     
     // MARK: UI layout
     func layoutUI() {
-        itemViews = [headerView, itemViewOne, itemViewTwo]
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         let padding: CGFloat = 20
         
         for itemView in itemViews {
@@ -88,6 +90,9 @@ class UserInfoVC: UIViewController {
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: 140),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
