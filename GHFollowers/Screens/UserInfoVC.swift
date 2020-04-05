@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import SafariServices
 
 // setup the protocol for the delegate
+// use :class to be able to set a weak link in memory
 protocol UserInfoVCDelegate: class {
     func didTapGithubProfile(for user: User)
     func didTapGetFollowers(for user: User)
@@ -26,6 +26,8 @@ class UserInfoVC: UIViewController {
     
     // username gets passed here from FollowerListVC from function -- extension FollowerListVC: UICollectionViewDelegate --
     var username: String!
+    
+    weak var delegate: FollowerListVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,16 +143,22 @@ extension UserInfoVC: UserInfoVCDelegate {
             return
         }
         
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemGreen
-        present(safariVC, animated: true)
+        // custom VC Extension file
+        preserntSafariVC(with: url)
     }
     
     
     
     // this function is called in the GFFOllowerItemVC
     func didTapGetFollowers(for user: User) {
-        // Dismiss this VC
         // Pass the follower list VC the new username so it can search for followers
+        guard user.followers != 0 else {
+            presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers. What a shame 😢", buttonTitle: "So Sad")
+            return
+        }
+        
+        delegate.didRequestFollowers(for: user.login)
+         // Dismiss this VC
+        dismissVC()
     }
 }

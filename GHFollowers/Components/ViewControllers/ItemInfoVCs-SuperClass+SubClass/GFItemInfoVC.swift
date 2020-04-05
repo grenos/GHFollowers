@@ -16,7 +16,10 @@ class GFItemInfoVC: UIViewController {
     let actionButton = GFButton()
     
     var user: User!
-    var delegate: UserInfoVCDelegate!
+    
+    // delegate variables need to be weak
+    // to avoid memory leaks
+    weak var delegate: UserInfoVCDelegate!
     
     
     // create a custom initializer

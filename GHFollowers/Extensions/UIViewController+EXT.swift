@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SafariServices
 
 // We cant save variables inside an extension so we decalre a 'global' variable inside this file
 // This global var with the keyword 'fileprivate' is available only in this file and not the entire programm
@@ -84,6 +84,13 @@ extension UIViewController {
         emptyStateView.frame = view.bounds
         // add it to the VC subView
         view.addSubview(emptyStateView)
+    }
+    
+    
+    func preserntSafariVC(with url: URL) {
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = .systemGreen
+        present(safariVC, animated: true)
     }
     
 }

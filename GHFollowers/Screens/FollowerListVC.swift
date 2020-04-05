@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+
+protocol FollowerListVCDelegate: class {
+    func didRequestFollowers(for username: String)
+}
+
+
+
 class FollowerListVC: UIViewController {
     
     // enums are hashable by default
@@ -169,6 +177,14 @@ class FollowerListVC: UIViewController {
     
 }
 
+
+
+// MARK: EXTENSIONS
+
+
+
+
+
 // MARK: Pagination
 // Conform to the collection View delegate to recieve the methods of the Collection View
 // (ue delegate to --> wait for an action to happen and act)
@@ -206,6 +222,9 @@ extension FollowerListVC: UICollectionViewDelegate {
         let userInfoVC = UserInfoVC()
         // pass the username to the modal to use at the user api call
         userInfoVC.username = follower.login
+        // set this vc as delegate of the UserInfoVC
+        // now this VC is listening to the userinfoìVC for new data
+        userInfoVC.delegate = self
         // we put the modal inside a NavController so we could have the navigation buttons in the modal
         let navController = UINavigationController(rootViewController: userInfoVC)
         present(navController, animated: true)
@@ -244,6 +263,24 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         updateData(on: followers)
     }
-    
-    
+}
+
+
+// MARK: Delegate
+extension FollowerListVC: FollowerListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        // get followers for new user
+        self.username = username
+        // set navbar title
+        title = username
+        // reset pagination couter
+        page = 1
+        // reset items from arrays
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        // set collectionView to starting point
+        collectionView.setContentOffset(.zero, animated: true)
+        // make the call to get followers with new username
+        getFollowers(username: username, page: page)
+    }
 }
