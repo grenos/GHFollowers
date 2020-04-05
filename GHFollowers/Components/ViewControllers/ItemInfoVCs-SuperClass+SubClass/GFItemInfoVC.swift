@@ -16,6 +16,8 @@ class GFItemInfoVC: UIViewController {
     let actionButton = GFButton()
     
     var user: User!
+    var delegate: UserInfoVCDelegate!
+    
     
     // create a custom initializer
     // so when we initialize the VC we can pass the User object
@@ -35,6 +37,7 @@ class GFItemInfoVC: UIViewController {
         configureBackgroundView()
         layoutUI()
         configureStackView()
+        configureActionButton()
     }
         
     
@@ -51,7 +54,16 @@ class GFItemInfoVC: UIViewController {
         stackView.addArrangedSubview(itemInfoView1)
         stackView.addArrangedSubview(itemInfoView2)
     }
-
+    
+    
+    // Add button actions
+    private func configureActionButton() {
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+    }
+    // this is empty because we are going to override and call it in the subClasses repos/followers
+    @objc func actionButtonTapped() {}
+    
+    
     
     private func layoutUI() {
         view.addSubview(stackView)

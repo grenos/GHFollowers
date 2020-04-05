@@ -89,14 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D7C66592438A2B300733687 /* ItemInfoVCs */ = {
+		7D7C66592438A2B300733687 /* ItemInfoVCs-SuperClass+SubClass */ = {
 			isa = PBXGroup;
 			children = (
 				7D7C6653243897F300733687 /* GFItemInfoVC.swift */,
 				7D7C665524389E0600733687 /* GFRepoItemVC.swift */,
 				7D7C66572438A22C00733687 /* GFFollowerItemVC.swift */,
 			);
-			path = ItemInfoVCs;
+			path = "ItemInfoVCs-SuperClass+SubClass";
 			sourceTree = "<group>";
 		};
 		7D98BB1B2428FE73006C53E9 = {
@@ -258,7 +258,7 @@
 		7DA45F7D2433DCE700AB426F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				7D7C66592438A2B300733687 /* ItemInfoVCs */,
+				7D7C66592438A2B300733687 /* ItemInfoVCs-SuperClass+SubClass */,
 				7D98BB49242A55ED006C53E9 /* GFAlertVC.swift */,
 				7DA45F842433FAF800AB426F /* GFUserInfoheaderVC.swift */,
 			);
