@@ -69,11 +69,6 @@ class FollowerListVC: UIViewController {
         navigationItem.rightBarButtonItem = addButton
     }
     
-    @objc func addToFavorites() {
-        dismiss(animated: true)
-    }
-    
-    
     
     func configureCollectionView() {
         // init collection view
@@ -117,8 +112,6 @@ class FollowerListVC: UIViewController {
     }
     
     
-    
-    
     func configureSearchController() {
         let searchController = UISearchController()
         
@@ -134,6 +127,44 @@ class FollowerListVC: UIViewController {
         navigationItem.searchController = searchController
         
     }
+    
+    
+    
+    // MARK: Add to Favorites Calls
+    @objc func addToFavorites() {
+        
+        // make network call with username to retreive the user avatar (shit code design)
+        // showloading
+        showLoadingView()
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            
+            switch result {
+                
+            // success return the user
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                
+                PersistanceManager.updateWith(favorite: favorite, actionType: .add) { [weak self ] error in
+                    guard let self = self else { return }
+                    // check to see if we have recieved and error
+                    guard let error = error else {
+                        // if error was nil ( no error)
+                        self.presentGFAlertOnMainThread(title: "Success!", message: "User was successfully added to the favorite list! 🥳", buttonTitle: "Horray!")
+                        return
+                    }
+                    
+                    self.presentGFAlertOnMainThread(title: "Somethig went wrong!", message: error.rawValue, buttonTitle: "Ok")
+                }
+                
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    
     
     
     
