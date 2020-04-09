@@ -39,6 +39,7 @@
 		7DB735092438AD0F00E7B09B /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB735082438AD0F00E7B09B /* Date+Ext.swift */; };
 		7DB7350B2438AD9000E7B09B /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7350A2438AD9000E7B09B /* String+Ext.swift */; };
 		7DB7350D243F523700E7B09B /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7350C243F523700E7B09B /* PersistanceManager.swift */; };
+		7DB7350F243F8AC100E7B09B /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7350E243F8AC100E7B09B /* FavoriteCell.swift */; };
 		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		7DB735082438AD0F00E7B09B /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		7DB7350A2438AD9000E7B09B /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		7DB7350C243F523700E7B09B /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		7DB7350E243F8AC100E7B09B /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				7DA45F6E242BC47D00AB426F /* FollowerCell.swift */,
+				7DB7350E243F8AC100E7B09B /* FavoriteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				7D98BB48242A5507006C53E9 /* GFBodyLabel.swift in Sources */,
 				7DA45F7C2430E3C900AB426F /* UserInfoVC.swift in Sources */,
 				7D7C665624389E0600733687 /* GFRepoItemVC.swift in Sources */,
+				7DB7350F243F8AC100E7B09B /* FavoriteCell.swift in Sources */,
 				7DA45F64242B73E600AB426F /* Follower.swift in Sources */,
 				7D98BB46242A52B7006C53E9 /* GFTitleLabel.swift in Sources */,
 				7D98BB4C242A7327006C53E9 /* UIViewController+EXT.swift in Sources */,
