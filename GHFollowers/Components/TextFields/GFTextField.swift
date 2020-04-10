@@ -44,6 +44,9 @@ class GFTextField: UITextField {
         //keyboardType = .default
         returnKeyType = .search
         
+        // add x button to clear text input
+        clearButtonMode = .whileEditing
+        
         placeholder = "Enter a username"
     }
 }
