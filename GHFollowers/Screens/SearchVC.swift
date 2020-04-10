@@ -72,12 +72,8 @@ class SearchVC: UIViewController {
         // dismiss keyboard when changing view
         userNameTextFiled.resignFirstResponder()
         
-        let followerListVC = FollowerListVC()
-        // pass the value of the input to the FollowersVC View
-        followerListVC.username = userNameTextFiled.text
-        // same for the navigation title
-        followerListVC.title = userNameTextFiled.text
-        // finally handle the navigation
+        let followerListVC = FollowerListVC(username: userNameTextFiled.text!)
+        // handle the navigation
         navigationController?.pushViewController(followerListVC, animated: true)
     }
     
