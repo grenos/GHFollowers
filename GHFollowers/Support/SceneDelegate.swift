@@ -18,47 +18,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         
         
-        
         // MARK: Set root view controller after deletion of storyboard
         guard let myWindowScene = (scene as? UIWindowScene) else { return }
         
         //init a new ui window with the scenre we created above that fills the entire screen
         window = UIWindow(frame: myWindowScene.coordinateSpace.bounds)
         window?.windowScene = myWindowScene
-        // we need to set a root VC for our windowScene
-        window?.rootViewController = createTabBar()
+        // we need to set a root VC for our windowScene and initialize the navigation class
+        window?.rootViewController = GFTabBarController()
         // to show the window
         window?.makeKeyAndVisible()
         
         
         configureNavigationBar()
-    }
-    
-    
-    // MARK: Initialize navigation
-    // init navigation controllers
-    func createSearchNC() -> UINavigationController {
-        let searchVC = SearchVC()
-        searchVC.title = "Search"
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        
-        return UINavigationController(rootViewController: searchVC)
-    }
-    
-    func createFavoritesNC() -> UINavigationController {
-        let favoritesVC = FavoriteListVC()
-        favoritesVC.title = "Favorites"
-        favoritesVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        
-        return UINavigationController(rootViewController: favoritesVC)
-    }
-    // put them inside the tab bar controller
-    func createTabBar() -> UITabBarController {
-        let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemGreen
-        tabbar.viewControllers = [createSearchNC(), createFavoritesNC()]
-
-        return tabbar
     }
     
     
