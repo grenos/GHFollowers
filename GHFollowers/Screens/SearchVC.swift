@@ -40,6 +40,8 @@ class SearchVC: UIViewController {
         // hide navbar on this screen
         // called in this lifecycle because we need to hide it everytime we enter this screen
         navigationController?.setNavigationBarHidden(true, animated: true)
+        // clear input on screen focus
+        userNameTextFiled.text = ""
     }
     
     
@@ -66,6 +68,9 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "Close")
             return
         }
+        
+        // dismiss keyboard when changing view
+        userNameTextFiled.resignFirstResponder()
         
         let followerListVC = FollowerListVC()
         // pass the value of the input to the FollowersVC View
