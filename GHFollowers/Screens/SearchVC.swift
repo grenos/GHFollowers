@@ -14,6 +14,8 @@ class SearchVC: UIViewController {
     let logoImageView = UIImageView()
     let userNameTextFiled = GFTextField()
     let CTAButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    // get access to the top constraint of the logo image so we can change its position based on the phone's screen size
+    var logoImageViewTopConstraint: NSLayoutConstraint!
     
     // computed property to control if inout is empty
     var isUsernameEntered: Bool {
@@ -81,11 +83,15 @@ class SearchVC: UIViewController {
     func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")!
+        logoImageView.image = UIImage(named: "gh-logo")
+        
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
         
         NSLayoutConstraint.activate([
             // place it on top after the safeArea and give it a margin of 80
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            logoImageViewTopConstraint,
             // center the image in the view horizontally
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             // set image height
