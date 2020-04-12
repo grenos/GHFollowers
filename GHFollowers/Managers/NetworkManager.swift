@@ -21,10 +21,12 @@ class NetworkManager {
     
     // MARK: @escaping closure explenation
     /*
-        Closures can be escaping or non escaping. If a closuse is escaping can 'outlive' the function that is declared in
-        It is used for asychronus operations (basically like a promise in JavaScript)
-        When we use an escaping closure we need to deal also with memory management (that why we use [weak self] on the return of the promise
+     Closures can be escaping or non escaping. If a closuse is escaping can 'outlive' the function that is declared in
+     It is used for asychronus operations (basically like a promise in JavaScript)
+     When we use an escaping closure we need to deal also with memory management (that why we use [weak self] on the return of the promise
      */
+    
+    
     
     
     // MARK: Followers Call
@@ -159,5 +161,63 @@ class NetworkManager {
         // start network call
         task.resume()
     }
+    
+    
+    
+    // MARK: Avatar Download
+    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+        
+        // CHECK IF IMAGE IS CACHED SO WE DONT DOWNLOD AGAIN
+        
+        // convert urlString to NSString
+        let cacheKey = NSString(string: urlString)
+        
+        // cacheKey already cached then return it and dont download
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
+        // else go down here and download the image
+        
+        // if param is not valid url return
+        guard let url = URL(string: urlString) else {
+            completed(nil)
+            return
+        }
+        
+        // make api call
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            
+            // combine all guard statements into one
+            // if all the following are true go ahead and do things
+            // else completed(nil)
+            guard let self = self,
+                // if calls returns error return
+                error == nil,
+                //if response exists and is not nil and if status code is 200(OK)
+                let response = response as? HTTPURLResponse, response.statusCode == 200,
+                // check if we actually have data returned
+                let data = data,
+                // pass the server data to the image
+                let image = UIImage(data: data) else {
+                    completed(nil)
+                    return
+            }
+            
+            
+            // save downloaded image to chache
+            self.cache.setObject(image, forKey: cacheKey)
+            
+            // if all ok call completed with image
+            completed(image)
+            
+        }
+        
+        task.resume()
+    }
+    
+    
+    
     
 }
