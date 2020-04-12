@@ -11,7 +11,7 @@ import SafariServices
 
 // We cant save variables inside an extension so we decalre a 'global' variable inside this file
 // This global var with the keyword 'fileprivate' is available only in this file and not the entire programm
-fileprivate var containerView: UIView!
+// fileprivate var containerView: UIView!
 
 
 // This extension is to be applied to all UIViewControllers used in this app
@@ -32,58 +32,6 @@ extension UIViewController {
             self.present(alertVC, animated: true)
         }
         
-    }
-    
-    
-    func showLoadingView() {
-        // init container view and set it to fill the entire screen
-        containerView = UIView(frame: view.bounds)
-        // add the container view into the VC view (which ever is going to call this func)
-        view.addSubview(containerView)
-        
-        containerView.backgroundColor = .systemBackground
-        containerView.alpha = 0
-        
-        // animate alpha
-        UIView.animate(withDuration: 0.25) {
-            containerView.alpha = 0.8
-        }
-        
-        
-        // add activity indicator
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        containerView.addSubview(activityIndicator)
-        
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        // center indicator on containerView
-        NSLayoutConstraint.activate([
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        
-        activityIndicator.startAnimating()
-        
-    }
-    
-    func dismissLoadingView() {
-        // We will always going to dismiss Loading View from a background thread
-        // because we call this function from the Network manager closure (promise)
-        // to avoid that we need to throw it in the main thread
-        DispatchQueue.main.async {
-            containerView.removeFromSuperview()
-            containerView = nil
-        }
-    }
-    
-    
-    // calling this function from a VC we wiil pass the message and a the view so we know where to constrain it
-    func showEmptyStateView(with message: String, in view: UIView) {
-        let emptyStateView = GFEmptyStateView(message: message)
-        // fill up the entire screen
-        emptyStateView.frame = view.bounds
-        // add it to the VC subView
-        view.addSubview(emptyStateView)
     }
     
     

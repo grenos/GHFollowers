@@ -16,7 +16,7 @@ protocol FollowerListVCDelegate: class {
 
 
 
-class FollowerListVC: UIViewController {
+class FollowerListVC: GFDataLoadingVC {
     
     // enums are hashable by default
     enum Section {
