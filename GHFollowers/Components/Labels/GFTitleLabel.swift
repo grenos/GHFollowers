@@ -21,13 +21,17 @@ class GFTitleLabel: UILabel {
     }
     
     
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
-        super.init(frame: .zero)
+    // with a concenience inti we have to call the designated init of the class
+    // and if we need to init the class with our custom init, here for example configure() will be called anyway
+    // this way can have more custom initializers and dont have to call the functions to each one of them
+    
+    // With a convenience init we can also give default values to paramteres so fpr example:
+    // if we have a super customized view that takes 5-6 params but we dont need to use all of them we can just pass the ones we need
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        
-        configure()
     }
     
     

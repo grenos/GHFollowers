@@ -23,10 +23,9 @@ class GFEmptyStateView: UIView {
     }
     
     // with the customs inits we can pass params when we call this view and initialize them
-    init(message: String) {
-        super.init(frame: .zero)
+    convenience init(message: String) {
+        self.init(frame: .zero)
         messageLabel.text = message
-        configure()
     }
     
     

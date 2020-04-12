@@ -27,13 +27,12 @@ class GFButton: UIButton {
     
     
     // custom initializer to pass title and color when we init a new button
-    init(backgroundColor: UIColor, title: String ){
+    convenience init(backgroundColor: UIColor, title: String ){
         // don't need a frame dimension for this one
-        super.init(frame: .zero)
+        self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         // set title and state of button (normal, pressed, disabled ecc)
         self.setTitle(title, for: .normal)
-        configure()
     }
     
     
