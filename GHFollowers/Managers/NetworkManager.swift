@@ -141,6 +141,8 @@ class NetworkManager {
                 let decoder = JSONDecoder()
                 // convert keys from snake_case to camelCase
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                // convert date to a standard Date format
+                decoder.dateDecodingStrategy = .iso8601
                 // array we want to create          its type        from the data constant from above
                 let user = try decoder.decode(User.self, from: data)
                 // if all ok call the completed callback, passing the array and nil for error

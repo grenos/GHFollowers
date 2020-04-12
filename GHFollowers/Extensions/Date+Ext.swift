@@ -9,6 +9,9 @@
 import Foundation
 
 
+// MARK: THIS IS NOT USED ANYMORE SINCE WE CONVERTED - DECODED THE STRING WE RECIEVE FROM THE API INTO A DATE FORMAT IN THE NETWORK MANAGER
+
+
 extension Date {
     
     func convertToMonthYearFormat() -> String {
