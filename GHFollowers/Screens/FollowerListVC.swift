@@ -33,6 +33,7 @@ class FollowerListVC: GFDataLoadingVC {
     var page = 1
     var hasMoreFollowers = true
     var isSearching = false
+    var isLoadingFollowers = false
     
     // takes 2 generic paraeters
     // both of them need to conform to hashable
@@ -188,6 +189,7 @@ class FollowerListVC: GFDataLoadingVC {
         
         // show activity indicator before the network call --- EXTENSIONS FILE ---
         showLoadingView()
+        isLoadingFollowers = true
         
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             // instead of adding self?. to all values below use guard for the self
@@ -195,6 +197,7 @@ class FollowerListVC: GFDataLoadingVC {
             
             // call to dismiss the loading indicator --- EXTENSIONS FILE ---
             self.dismissLoadingView()
+            self.isLoadingFollowers = false
             
             switch result {
             case .success(let followers):
@@ -254,7 +257,7 @@ extension FollowerListVC: UICollectionViewDelegate {
         if offsetY > contentHeight - scrollViewHeight {
             
             // if no more followers return
-            guard hasMoreFollowers else { return }
+            guard hasMoreFollowers, !isLoadingFollowers else { return }
             
             page += 1
             getFollowers(username: username, page: page)
