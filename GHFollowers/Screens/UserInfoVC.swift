@@ -8,11 +8,8 @@
 
 import UIKit
 
-// setup the protocol for the delegate
-// use :class to be able to set a weak link in memory
 protocol UserInfoVCDelegate: class {
-    func didTapGithubProfile(for user: User)
-    func didTapGetFollowers(for user: User)
+    func didRequestFollowers(for username: String)
 }
 
 
@@ -27,7 +24,7 @@ class UserInfoVC: UIViewController {
     // username gets passed here from FollowerListVC from function -- extension FollowerListVC: UICollectionViewDelegate --
     var username: String!
     
-    weak var delegate: FollowerListVCDelegate!
+    weak var delegate: UserInfoVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,7 +101,7 @@ class UserInfoVC: UIViewController {
  
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180),
+            headerView.heightAnchor.constraint(equalToConstant: 210),
             
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: 140),
@@ -133,7 +130,7 @@ class UserInfoVC: UIViewController {
 // we set the ItemInfoVC as the delegate
 
 // Conform to the protocol
-extension UserInfoVC: UserInfoVCDelegate {
+extension UserInfoVC: ItemInfoVCDelegate {
     // this function is called in the GFRepoItemVC
     func didTapGithubProfile(for user: User) {
         // show safari view controller

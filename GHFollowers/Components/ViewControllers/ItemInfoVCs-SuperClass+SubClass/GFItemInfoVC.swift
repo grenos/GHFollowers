@@ -8,6 +8,14 @@
 
 import UIKit
 
+// setup the protocol for the delegate
+// use :class to be able to set a weak link in memory
+protocol ItemInfoVCDelegate: class {
+    func didTapGithubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
+
+
 class GFItemInfoVC: UIViewController {
     
     let stackView = UIStackView()
@@ -19,7 +27,7 @@ class GFItemInfoVC: UIViewController {
     
     // delegate variables need to be weak
     // to avoid memory leaks
-    weak var delegate: UserInfoVCDelegate!
+    weak var delegate: ItemInfoVCDelegate!
     
     
     // create a custom initializer

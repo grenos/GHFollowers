@@ -10,12 +10,6 @@ import UIKit
 
 
 
-protocol FollowerListVCDelegate: class {
-    func didRequestFollowers(for username: String)
-}
-
-
-
 class FollowerListVC: GFDataLoadingVC {
     
     // enums are hashable by default
@@ -317,7 +311,7 @@ extension FollowerListVC: UISearchResultsUpdating {
 
 
 // MARK: Delegate
-extension FollowerListVC: FollowerListVCDelegate {
+extension FollowerListVC: UserInfoVCDelegate {
     func didRequestFollowers(for username: String) {
         // get followers for new user
         self.username = username
