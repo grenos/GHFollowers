@@ -47,7 +47,7 @@ class GFUserInfoheaderVC: UIViewController {
         bioLabel.text = user.bio ?? ""
         bioLabel.numberOfLines = 3
         
-        locationImageView.image = UIImage(systemName: SFSymbols.location)
+        locationImageView.image = SFSymbols.location
         // ovveride the default blue color of SFSymbols
         locationImageView.tintColor = .secondaryLabel
     }
