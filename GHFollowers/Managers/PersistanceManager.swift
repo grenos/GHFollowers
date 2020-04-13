@@ -32,30 +32,27 @@ enum PersistanceManager {
         // first we need to get the favorites array from User Defaults
         retrieveFavorites { result in
             switch result {
-            case .success(let favorites):
-                
-                // create a new array from the favorites array (because now it is imutable)
-                var retrievedFavorites = favorites
+            case .success(var favorites):
                 
                 // see if we want to add or remove a follower
                 switch actionType {
                     
                 case .add:
                     // see if follwer is alreay added to array
-                    guard !retrievedFavorites.contains(favorite) else {
+                    guard !favorites.contains(favorite) else {
                         completed(.alreadyInFavorites)
                         return
                     }
                     // if user isn't in array of favorites
-                    retrievedFavorites.append(favorite)
+                    favorites.append(favorite)
                     
                 case .remove:
                     // if we want to remove, remove all items with same login with passed user
-                    retrievedFavorites.removeAll { $0.login == favorite.login }
+                    favorites.removeAll { $0.login == favorite.login }
                 }
                 
                 // call function to save the updated favorites Array
-                completed(save(favorites: retrievedFavorites))
+                completed(save(favorites: favorites))
                 
                 
             case .failure(let error):

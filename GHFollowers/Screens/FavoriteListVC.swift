@@ -41,6 +41,7 @@ class FavoriteListVC: GFDataLoadingVC {
         tableView.rowHeight = 80
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.removeUnusedCells()
         
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
     }
@@ -107,20 +108,23 @@ extension FavoriteListVC: UITableViewDelegate, UITableViewDataSource {
         // make sure we delete
         guard editingStyle == .delete else { return }
         
-        // get selected user to delete
+        // get selected user
         let favorite = favorites[indexPath.row]
-        // delete user from array that we use to populate the tableview
-        favorites.remove(at: indexPath.row)
-        // delete user from the tableView
-        tableView.deleteRows(at: [indexPath], with: .left)
-        
-        
+
         // delete user from persistnace
         PersistanceManager.updateWith(favorite: favorite, actionType: PersistanceActionType.remove) { [weak self] (error) in
             guard let self = self else { return }
             
-            // if we dont have error dont do nothing and return
-            guard let error = error else { return }
+            // if we dont have error update UI
+            guard let error = error else {
+
+                // delete user from array that we use to populate the tableview
+                self.favorites.remove(at: indexPath.row)
+                // delete user from the tableView
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+                
+            }
             
             // if we have an error
             self.presentGFAlertOnMainThread(title: "Oooops. Unable to remove user 😩", message: error.rawValue, buttonTitle: "Ok")
