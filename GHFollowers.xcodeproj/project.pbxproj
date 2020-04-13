@@ -42,6 +42,7 @@
 		7DB7350F243F8AC100E7B09B /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7350E243F8AC100E7B09B /* FavoriteCell.swift */; };
 		7DB7351224409BFE00E7B09B /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7351124409BFE00E7B09B /* GFTabBarController.swift */; };
 		7DB735142443929200E7B09B /* GFDataLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB735132443929200E7B09B /* GFDataLoadingVC.swift */; };
+		7DB7351624447F5800E7B09B /* UIView+EXt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB7351524447F5800E7B09B /* UIView+EXt.swift */; };
 		7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		7DB7350E243F8AC100E7B09B /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		7DB7351124409BFE00E7B09B /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
 		7DB735132443929200E7B09B /* GFDataLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFDataLoadingVC.swift; sourceTree = "<group>"; };
+		7DB7351524447F5800E7B09B /* UIView+EXt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EXt.swift"; sourceTree = "<group>"; };
 		7DFAC889242A86D200F5780C /* GFAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				7D98BB4B242A7327006C53E9 /* UIViewController+EXT.swift */,
 				7DB735082438AD0F00E7B09B /* Date+Ext.swift */,
 				7DB7350A2438AD9000E7B09B /* String+Ext.swift */,
+				7DB7351524447F5800E7B09B /* UIView+EXt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			files = (
 				7DFAC88A242A86D200F5780C /* GFAlertContainerView.swift in Sources */,
 				7D98BB4224291DF3006C53E9 /* GFTextField.swift in Sources */,
+				7DB7351624447F5800E7B09B /* UIView+EXt.swift in Sources */,
 				7D98BB3E242907BB006C53E9 /* FavoriteListVC.swift in Sources */,
 				7D98BB40242917E4006C53E9 /* GFButton.swift in Sources */,
 				7D98BB3C24290771006C53E9 /* SearchVC.swift in Sources */,

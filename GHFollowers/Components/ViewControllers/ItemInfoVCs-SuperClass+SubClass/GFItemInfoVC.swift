@@ -69,9 +69,9 @@ class GFItemInfoVC: UIViewController {
     
     
     private func layoutUI() {
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
-        
+        // custom extension
+        view.addSubviews(stackView, actionButton)
+   
         stackView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20
         

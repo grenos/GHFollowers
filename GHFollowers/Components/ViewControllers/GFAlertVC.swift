@@ -39,6 +39,9 @@ class GFAlertVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         
+        // we can add subviews like this in the begining
+        view.addSubviews(containerView, titleLabel, CTAButton, messageLabel)
+        
         configureContainerView()
         configureTitleLabel()
         configureButton()
@@ -50,7 +53,7 @@ class GFAlertVC: UIViewController {
     // MARK: UI Functions
     
     func configureContainerView() {
-        view.addSubview(containerView)
+        //view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
             // center vertically to screen
@@ -66,7 +69,8 @@ class GFAlertVC: UIViewController {
     
     
     func configureTitleLabel() {
-        containerView.addSubview(titleLabel)
+        //containerView.addSubview(titleLabel)
+        
         // Nil Coalescing ?? -- if nil use what comes after the ?? --
         titleLabel.text = alertTitle ?? "Something went wrong"
         
@@ -80,7 +84,7 @@ class GFAlertVC: UIViewController {
     
     
     func configureButton() {
-        containerView.addSubview(CTAButton)
+        //containerView.addSubview(CTAButton)
         CTAButton.setTitle(buttonTitle ?? "Ok", for: .normal)
         CTAButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         
@@ -94,7 +98,7 @@ class GFAlertVC: UIViewController {
     
     
     func configureMessageLabel() {
-        containerView.addSubview(messageLabel)
+        //containerView.addSubview(messageLabel)
         messageLabel.text = message ?? "Unable to complete request"
         messageLabel.numberOfLines = 4
         
