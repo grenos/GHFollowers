@@ -325,8 +325,8 @@ extension FollowerListVC: FollowerListVCDelegate {
         // reset items from arrays
         followers.removeAll()
         filteredFollowers.removeAll()
-        // set collectionView to starting point
-        collectionView.setContentOffset(.zero, animated: true)
+        // animate collection to first row of collection
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         // make the call to get followers with new username
         getFollowers(username: username, page: page)
     }
