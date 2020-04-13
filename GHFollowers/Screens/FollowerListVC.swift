@@ -130,8 +130,6 @@ class FollowerListVC: GFDataLoadingVC {
         
         // set the delegate for searchResultsUpdater
         searchController.searchResultsUpdater = self
-        // set the delegate to listen to the search bar events (needed for the cancel button)
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search followers"
         // set overlay to false so we can tap on a user
         searchController.obscuresBackgroundDuringPresentation = false
@@ -287,12 +285,17 @@ extension FollowerListVC: UICollectionViewDelegate {
 
 
 // MARK: Filter arrays
-extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListVC: UISearchResultsUpdating {
     
     // this informs the VC every time the search results are changed
     func updateSearchResults(for searchController: UISearchController) {
         
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else {return}
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            filteredFollowers.removeAll()
+            updateData(on: followers)
+            isSearching = false
+            return
+        }
         
         //set the switch on
         isSearching = true
@@ -306,15 +309,6 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
         
         // Update collection view with new results passing the new array
         updateData(on: filteredFollowers)
-    }
-    
-    
-    // when cancel button is tapped update the collection View using the original follwers array
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //set the switch on
-        isSearching = false
-        
-        updateData(on: followers)
     }
 }
 
